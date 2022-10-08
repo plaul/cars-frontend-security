@@ -1,4 +1,4 @@
-import { handleHttpErrors } from "../..//utils.js"
+import { handleHttpErrors } from "../../utils.js"
 import { API_URL } from "../../settings.js"
 
 //Add id to this URL to get a single user
@@ -114,6 +114,11 @@ async function submitNewOrEditedCar(evt) {
     car.pricePrDay = document.getElementById("price-pr-day").value
     car.bestDiscount = document.getElementById("best-discount").value
 
+    if (car.brand === "" || car.model === "" || car.pricePrDay == "") {
+      setStatusMsg(`Missing fields required for a submit`, false)
+      return
+    }
+
     const options = {}
     //If ID is set, it must be an existing car, so method is PUT
     options.method = car.id ? "PUT" : "POST"
@@ -126,7 +131,11 @@ async function submitNewOrEditedCar(evt) {
     clearInputFields()
     if (options.method === "POST") {
       renderCar(newCar)
+      enableInputFields(false)
       setStatusMsg(`New car with id '${newCar.id}' was added`, false)
+    } else {
+      setStatusMsg(`Car with id '${car.id}' was successfully edited`)
+
     }
 
   } catch (err) {

@@ -16,7 +16,7 @@ export async function initCars() {
   <td>${car.bestDiscount}</td>
   <td><button id="${car.id}-column-id" class="btn btn-sm btn-secondary">Edit/delete</button> </td>      
   </tr>
-  `).join("/n")
+  `).join("\n")
 
   const safeRows = sanitizeStringWithTableRows(carRows);
   document.getElementById("table-rows").innerHTML = safeRows
@@ -28,6 +28,6 @@ export async function initCars() {
       return
     }
     const id = target.id.replace("-column-id", "")
-    window.router.navigate("add-edit-car?id=" + id)
+    window.router.navigate("find-edit-car?id=" + id)
   }
 }

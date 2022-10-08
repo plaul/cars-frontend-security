@@ -1,24 +1,28 @@
-import "https://unpkg.com/navigo"  //Will create the global Navigo object used below
+//import "https://unpkg.com/navigo"  //Will create the global Navigo object used below
+import "./navigo.js"  //Will create the global Navigo object used below
 
 
 import {
   setActiveLink, adjustForMissingHash, renderTemplate, loadHtml
 } from "./utils.js"
 
-import { initReserve } from "./pages/reservation/reserve.js"
+import { initReservation } from "./pages/reservation/reserve.js"
 import { initUsers } from "./pages/users/users.js"
 import { initCars } from "./pages/cars/cars.js"
 import { initLogin } from "./pages/login/login.js"
-import { initAddEditCar } from "./pages/addEditCar/handleAddEditCar.js"
+import { initAddEditCar } from "./pages/editCar/handleEditCar.js"
+import { initListReservationsAll } from "./pages/reservationsAll/initListReservations.js"
 
 window.addEventListener("load", async () => {
 
   const templateAbout = await loadHtml("./pages/about/about.html")
   const templateCars = await loadHtml("./pages/cars/cars.html")
   const templateUsers = await loadHtml("./pages/users/users.html")
+  const templateSignup = await loadHtml("./pages/signup/signup.html")
   const templateLogin = await loadHtml("./pages/login/login.html")
-  const templateAddEditCar = await loadHtml("./pages/addEditCar/addEditCar.html")
+  const templateEditCar = await loadHtml("./pages/editCar/editCar.html")
   const templateReserve = await loadHtml("./pages/reservation/reserve.html")
+  const templateReservations = await loadHtml("./pages/reservationsAll/listReservations.html")
   const templateNotFound = await loadHtml("./pages/notFound/notFound.html")
 
   adjustForMissingHash()
@@ -47,16 +51,22 @@ window.addEventListener("load", async () => {
         renderTemplate(templateCars, "content")
         initCars()
       },
-      "/add-edit-car": (match) => {
-        renderTemplate(templateAddEditCar, "content")
+      "/find-edit-car": (match) => {
+        renderTemplate(templateEditCar, "content")
         initAddEditCar(match)
       },
 
       "/reserve-car": () => {
         renderTemplate(templateReserve, "content")
-        initReserve()
+        initReservation()
       },
-
+      "/reservations": () => {
+        renderTemplate(templateReservations, "content")
+        initListReservationsAll()
+      },
+      "/signup": () => {
+        renderTemplate(templateSignup, "content")
+      },
       "/login": (match) => {
         renderTemplate(templateLogin, "content")
         initLogin()

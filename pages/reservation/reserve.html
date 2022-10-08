@@ -1,4 +1,49 @@
 <div class="template">
   <h2>Reserve Car</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <td>Id</td>
+        <td>Brand</td>
+        <td>Model</td>
+        <td>Price pr. day</td>
+        <td>Reserve Car</td>
+      </tr>
+    </thead>
+    <tbody id="table-rows"></tbody>
+  </table>
+
+  <!-- Modal -->
+  <div class="modal fade" id="reservation-modal" tabindex="-1" aria-labelledby="reservation-modal-label"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="reservation-modal-label">Reserve car</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="input-content">
+            <p style="font-style: italic;">With security enabled, and if this requires a user to be logged in,
+              username is not nessecary, since the server will know who the currently logged in user is </p>
+            <div class="form-row" class="form-group">
+              <label for="user-name">User name</label>
+              <input id="user-name" style="max-width: 15em;" placeholder="Enter your user name">
+            </div>
+            <div class="form-row">
+              <label for="reservation-date">Date</label>
+              <input id="reservation-date" type="date" placeholder="Select a reservation date">
+            </div>
+            <input hidden id="car-id" />
+          </div>
+          <p id="status"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button id="btn-reservation" type="button" class="btn btn-primary">Make Reservation</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>
