@@ -1,43 +1,14 @@
-.flex-container {
-  display: flex;
-  flex-direction: column;
+
+.row label {
+  margin-top: 1.5em;
+  vertical-align: middle;
+  text-align: right;
 }
 
-.flex-container div > input  {
-   min-width: 10em;
-}
-.flex-container div > label  {
-   min-width: 6em;
-}
-
-.input-content {
-  background-color: whitesmoke;
-  max-width: 50em;
-  padding: .5em;
-  border-radius: 3px;
-}
-.form-row {
-  display: flex;
-  justify-content: flex-end;
-  padding: .5em;
-  
-}
-.form-row > label {
-  padding: .5em 1em .5em 0;
-  flex: 1;
-}
-.form-row > input {
-  flex: 6;
-  border:1px solid lightgrey;
-  border-radius: 5px;
-}
-
-.car-id-input-row {
-  display:flex;
-  max-width: 20em;
-}
-.car-id-input-row > input {
-  border:1px solid lightgrey;
-  border-radius: 5px;
-  max-width: 8em;
+.row input, button {
+  margin-top: 1em;
+  padding: 0.5em;
+  border-radius: 4px;
+  width:100%;
+  border: 1px solid lightgray;
 }

@@ -1,0 +1,96 @@
+<div class="template">
+  <h3>Get all users</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Ranking</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody id="tbl-body">
+    </tbody>
+  </table>
+
+  <!-- Modal -->
+  <div class="modal fade" id="member-details-modal" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-label">Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p style="color:red;">
+            Here details are presented as the raw data. In a real project, present it nicely</p>
+          <div id="member-content"></div>
+          <div class="row">
+            <div class="col-3">Username:</div>
+            <div class="col-9">
+              <p id="user-name"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3">email:</div>
+            <div class="col-9">
+              <p id="email"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3">First name:</div>
+            <div class="col-9">
+              <p id="first-name"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3">Last name:</div>
+            <div class="col-9">
+              <p id="last-name"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3">Street:</div>
+            <div class="col-9">
+              <p id="street"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3">City:</div>
+            <div class="col-9">
+              <p id="city"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3">Zip:</div>
+            <div class="col-9">
+              <p id="zip"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3">Created:</div>
+            <div class="col-9">
+              <p id="created"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3">Edited:</div>
+            <div class="col-9">
+              <p id="edited"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3">Ranking:</div>
+            <div class="col-9">
+              <p id="ranking"></p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,40 +1,41 @@
 <div class="template">
-  <style>
-    .imgcontainer {
-      text-align: center;
-      margin: 24px 0 12px 0;
-    }
-
-    img.carlogo {
-      width: 50%;
-      min-width: 500px;
-    }
-  </style>
 
   <div style="margin-left:10%;margin-right: 10%;">
     <h1>Login</h1>
 
-    <div>
-      <img src="../../images/cars.PNG" alt="cars logo" class="carlogo">
-      <div>
-        <div class="input-content" style="width:600px;">
-          <div class="form-row">
-            <label for="username"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" id="username" required>
 
+    <div>
+      <div style="max-width:600px;">
+        <div class="row" style="display:flex">
+          <img class="img-fluid" src="../../images/cars.PNG" alt="cars logo" class="carlogo">
+        </div>
+        <div class="row">
+          <div class="col-2">
+            <label for="username"><b>Username</b></label>
           </div>
-          <div class="form-row">
+          <div class="col-8">
+            <input type="text" placeholder="Enter Username" id="username" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2">
             <label for="password"><b>Password</b></label>
+          </div>
+          <div class="col-8">
             <input type="password" placeholder="Enter Password" id="password" required>
           </div>
-          <div style="margin-top:2em;">
-            <button class="btn btn-dark" style="width:30%">Login</button>
+        </div>
+        <div class="row" style="margin-top:2em;">
+          <div class="col-3">
+            <button style="width:100%" class="btn btn-dark">Login</button>
+          </div>
+          <div class="col-9">
             <span style="margin-left:1em;">Not yet a member
               <a href="/signup" data-navigo>Sign Up </a> &nbsp;
-              <button class="btn btn-link" onClick="alert('This is not, and will not be, implemented')">Forgot password
+              <button class="btn btn-link" onClick="alert('This is not, and will not be, implemented')">Forgot
+                password
               </button>
             </span>
           </div>
         </div>
-
       </div>

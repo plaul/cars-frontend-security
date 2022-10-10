@@ -23,20 +23,29 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="input-content">
+          <div>
             <p style="font-style: italic;">With security enabled, and if this requires a user to be logged in,
               username is not nessecary, since the server will know who the currently logged in user is </p>
-            <div class="form-row" class="form-group">
-              <label for="user-name">User name</label>
-              <input id="user-name" style="max-width: 15em;" placeholder="Enter your user name">
+            <div class="row">
+              <div class="col-3">
+                <label for="user-name">User name</label>
+              </div>
+              <div class="col-9">
+                <input id="user-name" placeholder="Enter your user name">
+              </div>
             </div>
-            <div class="form-row">
-              <label for="reservation-date">Date</label>
-              <input id="reservation-date" type="date" placeholder="Select a reservation date">
+            <div class="row">
+              <div class="col-3">
+                <label for="reservation-date">Date</label>
+              </div>
+              <div class="col-9">
+                <input id="reservation-date" type="date" placeholder="Select a reservation date">
+              </div>
             </div>
             <input hidden id="car-id" />
           </div>
-          <p id="status"></p>
+          <br />
+          <p id="status">&nbsp;</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

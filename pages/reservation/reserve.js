@@ -31,6 +31,10 @@ async function setupReservationModal(evt) {
   const headerText = `Reserve car: (${car.id}), ${car.brand}, ${car.model}, price: ${car.pricePrDay}`
   document.getElementById("reservation-modal-label").innerText = headerText
   document.getElementById("car-id").value = car.id
+
+  document.getElementById("user-name").value = ""
+  document.getElementById("reservation-date").value = ""
+  setStatusMsg("",false)
   document.getElementById("btn-reservation").onclick = reserveCar
 }
 

@@ -1,6 +1,90 @@
 <div class="template">
-  <div style="margin:10%;text-align: center;">
-    <h1>Signup</h1>
-    <h1> Not yet implemented</h1>
+  <style>
+    .row label {
+      margin-top: 1.5em;
+      vertical-align: middle;
+      text-align: right;
+    }
+
+    .row input {
+      margin-top: 1em;
+      padding: 0.5em;
+      border-radius: 4px;
+      border: 1px solid lightgray;
+    }
+  </style>
+  <h3 style="margin-top: 0.5em;min-height: 1em;">Sign up with Car's 'R' Us</h3>
+  <hr />
+  <div>
+    <form id="form" style="max-width: 900px;">
+      <div class="row">
+        <div class="col-2 text-end">
+          <label for="input-username">User Name</label>
+        </div>
+        <div class="col-3">
+          <input id="input-username" required>
+        </div>
+        <div class="col-2 text-end">
+          <label for="input-email">Email</label>
+        </div>
+        <div class="col-5">
+          <input id="input-email" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2 text-end">
+          <label for="input-password">Password</label>
+        </div>
+        <div class="col-3">
+          <input type=password id="input-password" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2 text-end">
+          <label for="input-firstname">First Name</label>
+        </div>
+        <div class="col-3">
+          <input id="input-firstname">
+        </div>
+        <div class="col-2 text-end">
+          <label for="input-lastname">Last Name</label>
+        </div>
+        <div class="col-5">
+          <input id="input-lastname" ">
+        </div>
+      </div>
+      <div class=" row">
+          <div class="col-2 text-end">
+            <label for="input-street">Street</label>
+          </div>
+          <div class="col-10">
+            <input id="input-street">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2 text-end">
+            <label class="col-2" for="input-city">City</label>
+          </div>
+          <div class="col-4">
+            <input id="input-city">
+          </div>
+          <div class="col-1 text-end">
+            <label for="input-zip">Zip</label>
+          </div>
+          <div class="col-5">
+            <input id="input-zip">
+          </div>
+        </div>
+        <div class="row">
+          <p id="status" style="min-height: 1em;margin-top:0.5em"> </p>
+        </div>
+        <div class="row" style="margin-top:2em;">
+          <button id="btn-submit-car" class="btn btn-dark">Register</button>
+          &nbsp;
+          <a id="goto-login" href="/login" data-navigo style="display:none">Go to login?</a>
+        </div>
+    </form>
+
+
   </div>
 </div>
