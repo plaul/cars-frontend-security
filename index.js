@@ -12,7 +12,7 @@ import { initAddCar } from "./pages/addCar/addCar.js"
 import { initLogin } from "./pages/login/login.js"
 import { initSignup } from "./pages/signup/signup.js"
 import { initFindEditCar } from "./pages/findEditCar/findEditCar.js"
-import { initListReservationsAll } from "./pages/reservationsAll/initListReservations.js"
+import { initListReservationsAll } from "./pages/showReservations/reservations.js"
 
 window.addEventListener("load", async () => {
 
@@ -24,7 +24,7 @@ window.addEventListener("load", async () => {
   const templateLogin = await loadHtml("./pages/login/login.html")
   const templateFindEditCar = await loadHtml("./pages/findEditCar/findEditCar.html")
   const templateReserve = await loadHtml("./pages/reservation/reserve.html")
-  const templateReservations = await loadHtml("./pages/reservationsAll/listReservations.html")
+  const templateReservations = await loadHtml("./pages/showReservations/reservations.html")
   const templateNotFound = await loadHtml("./pages/notFound/notFound.html")
 
   adjustForMissingHash()

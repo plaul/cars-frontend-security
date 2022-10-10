@@ -17,9 +17,13 @@ export async function initListReservationsAll() {
    `).join("\n")
     const safeRows = sanitizeStringWithTableRows(rows)
     document.getElementById("tablerows").innerHTML = safeRows
-  } catch (ex) {
-    console.error(ex)
-    alert("Please handle this in a better way!")
+  } catch (err) {
+    if (err.apiError) {
+      document.getElementById("error").innerText = err.apiError.message
+    } else {
+      document.getElementById("error").innerText = err.message + " (Is the API online)"
+      console.error(err.message + " (Is the API online)")
+    }
   }
 }
 

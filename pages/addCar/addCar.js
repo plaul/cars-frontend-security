@@ -47,7 +47,13 @@ async function submitCar(evt) {
     setStatusMsg(`${newCar.brand}, ${newCar.model} with id '${newCar.id}' was successfully added`)
 
   } catch (err) {
-    setStatusMsg(err, true)
+
+    if (err.apiError) {
+      setStatusMsg(err.apiError.message, true)
+    } else {
+      setStatusMsg(err.message + " (Is the API online?)", true)
+      console.error(err.message + " (Is the API online?")
+    }
   }
 }
 

@@ -36,7 +36,13 @@ async function deleteCar() {
     clearInputFields()
   }
   catch (err) {
-    setStatusMsg(err, true)
+    if (err.apiError) {
+      setStatusMsg(err.apiError.message, true)
+    }
+    else {
+      setStatusMsg(err.message + " Is the API online?)")
+      console.log(err.message + " Is the API online?)")
+    }
   }
 }
 
@@ -53,7 +59,12 @@ async function fetchCar(evt, idFromMatch) {
     renderCar(car)
     setInfoText("Edit values and press 'Submit changes' or delete if needed")
   } catch (err) {
-    setStatusMsg("Could not find car", true)
+    if (err.apiError) {
+      setStatusMsg(err.apiError.message, true)
+    } else {
+      setStatusMsg(err.message + " (Is the API online?)", true)
+      console.log(err.message + " (Is the API online?)")
+    }
   }
 }
 
@@ -104,7 +115,11 @@ async function submitEditedCar(evt) {
     clearInputFields()
     setStatusMsg(`Car with id '${car.id}' was successfully edited`)
   } catch (err) {
-    setStatusMsg(err, true)
+    if (err.apiError) {
+      setStatusMsg(err.apiError.message, true)
+    } else {
+      console.log(err.message + " (Is the API online?)")
+    }
   }
 }
 

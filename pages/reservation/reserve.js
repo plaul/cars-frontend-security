@@ -6,9 +6,10 @@ const URL = API_URL + "/cars"
 
 
 export async function initReservation() {
-  const cars = await fetch(URL).then(handleHttpErrors)
-  document.getElementById("table-rows").onclick = setupReservationModal
-  const carRows = cars.map(car => `
+  try {
+    const cars = await fetch(URL).then(handleHttpErrors)
+    document.getElementById("table-rows").onclick = setupReservationModal
+    const carRows = cars.map(car => `
   <tr>
   <td>${car.id}</td>
   <td>${car.brand}</td>
@@ -18,8 +19,16 @@ export async function initReservation() {
   </tr>
   `).join("\n")
 
-  const safeRows = sanitizeStringWithTableRows(carRows);
-  document.getElementById("table-rows").innerHTML = safeRows
+    const safeRows = sanitizeStringWithTableRows(carRows);
+    document.getElementById("table-rows").innerHTML = safeRows
+  } catch (err) {
+    if (err.apiError) {
+      setStatusMsg(err.apiError.message, true, "error")
+    } else {
+      setStatusMsg(err.message + " (Is the API online)", true, "error")
+      console.error(err.message + " (Is the API online)")
+    }
+  }
 }
 
 async function setupReservationModal(evt) {
@@ -34,7 +43,7 @@ async function setupReservationModal(evt) {
 
   document.getElementById("user-name").value = ""
   document.getElementById("reservation-date").value = ""
-  setStatusMsg("",false)
+  setStatusMsg("", false)
   document.getElementById("btn-reservation").onclick = reserveCar
 }
 
@@ -58,9 +67,9 @@ async function reserveCar() {
   }
 }
 
-function setStatusMsg(msg, isError) {
+function setStatusMsg(msg, isError, node) {
   const color = isError ? "red" : "darkgreen"
-  const statusNode = document.getElementById("status")
+  const statusNode = node ? document.getElementById(node) : document.getElementById("status")
   statusNode.style.color = color
   statusNode.innerText = msg
 }

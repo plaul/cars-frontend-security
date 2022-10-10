@@ -14,7 +14,12 @@ async function getAllMembers() {
     showAllData(usersFromServer)
   }
   catch (err) {
-    console.error("UPPPPPS: " + err) //This can be done better
+    if (err.apiError) {
+      document.getElementById("error").innerText = err.apiError.message
+    } else {
+      document.getElementById("error").innerText = err.message + " (Is the API online?)"
+      console.error(err.message + " (Is the API online?)")
+    }
   }
 }
 
@@ -39,18 +44,20 @@ function showDetails(evt) {
     return
   }
   const memberAsJson = decodeURI(btn.dataset.member)
-  const member = JSON.parse(memberAsJson)
+  const mem = JSON.parse(memberAsJson)
 
-  document.getElementById("user-name").innerText = member.username
-  document.getElementById("email").innerText = member.email
-  document.getElementById("first-name").innerText = member.firstName
-  document.getElementById("last-name").innerText = member.lastName
-  document.getElementById("street").innerText = member.street
-  document.getElementById("city").innerText = member.city
-  document.getElementById("zip").innerText = member.zip
-  document.getElementById("created").innerText = member.created
-  document.getElementById("edited").innerText = member.edited
-  document.getElementById("ranking").innerText = member.ranking
+  const headerText = `Details for ${mem.username} (${mem.firstName} ${mem.lastName})`
+  document.getElementById("modal-title").innerText = headerText
+  document.getElementById("user-name").innerText = mem.username
+  document.getElementById("email").innerText = mem.email
+  document.getElementById("first-name").innerText = mem.firstName
+  document.getElementById("last-name").innerText = mem.lastName
+  document.getElementById("street").innerText = mem.street
+  document.getElementById("city").innerText = mem.city
+  document.getElementById("zip").innerText = mem.zip
+  document.getElementById("created").innerText = mem.created
+  document.getElementById("edited").innerText = mem.edited
+  document.getElementById("ranking").innerText = mem.ranking
 
   //  document.getElementById("member-content").innerText = memberAsJson
 

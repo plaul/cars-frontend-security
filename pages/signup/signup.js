@@ -54,7 +54,7 @@ async function saveMember(evt) {
     document.getElementById("goto-login").style.display = "block"
 
   } catch (err) {
-    setStatusMsg(err.message, true)
+    setStatusMsg(err.message + " (Is the API online?)", true)
     if (err.apiError) {
       setStatusMsg(err.apiError.message, true)
     }

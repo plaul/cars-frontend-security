@@ -5,9 +5,10 @@ const URL = API_URL + "/cars/admin"
 
 
 export async function initCars() {
-  const cars = await fetch(URL).then(handleHttpErrors)
-  document.getElementById("table-rows").onclick = gotoToAddEditView
-  const carRows = cars.map(car => `
+  try {
+    const cars = await fetch(URL).then(handleHttpErrors)
+    document.getElementById("table-rows").onclick = gotoToAddEditView
+    const carRows = cars.map(car => `
   <tr>
   <td>${car.id}</td>
   <td>${car.brand}</td>
@@ -18,16 +19,24 @@ export async function initCars() {
   </tr>
   `).join("\n")
 
-  const safeRows = sanitizeStringWithTableRows(carRows);
-  document.getElementById("table-rows").innerHTML = safeRows
-
-  async function gotoToAddEditView(evt) {
-    const target = evt.target
-    //Verify that it was a Edit/Delete button that was clicked
-    if (!target.id.includes("-column-id")) {
-      return
+    const safeRows = sanitizeStringWithTableRows(carRows);
+    document.getElementById("table-rows").innerHTML = safeRows
+  } catch (err) {
+    if (err.apiError) {
+      document.getElementById("error").innerText = err.apiError.message
+    } else {
+      document.getElementById("error").innerText = err.message + " (Is the API online?)"
+      console.error(err.message + " (Is the API online?)")
     }
-    const id = target.id.replace("-column-id", "")
-    window.router.navigate("find-edit-car?id=" + id)
   }
+}
+
+async function gotoToAddEditView(evt) {
+  const target = evt.target
+  //Verify that it was a Edit/Delete button that was clicked
+  if (!target.id.includes("-column-id")) {
+    return
+  }
+  const id = target.id.replace("-column-id", "")
+  window.router.navigate("find-edit-car?id=" + id)
 }
