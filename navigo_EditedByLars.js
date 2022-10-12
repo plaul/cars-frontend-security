@@ -1,10 +1,10 @@
-/***************************************************************************************/
+/*****************************************************************************************/
 /* Important note: 
    This version contains a change, that solves a problem when used with Bottstraps Navbar
    This could however cousse problems with other Navigo features.
    Search for lmor@kea.dk to see the changes
  */
-/***************************************************************************************/
+/*****************************************************************************************/
 
 (function webpackUniversalModuleDefinition(root, factory) {
   if (typeof exports === 'object' && typeof module === 'object')
