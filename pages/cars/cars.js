@@ -3,7 +3,6 @@ import { handleHttpErrors } from "../../utils.js"
 import { sanitizeStringWithTableRows } from "../../utils.js"
 const URL = API_URL + "/cars/admin"
 
-
 export async function initCars() {
   try {
     const cars = await fetch(URL).then(handleHttpErrors)

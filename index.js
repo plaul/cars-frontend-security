@@ -1,5 +1,6 @@
 //import "https://unpkg.com/navigo"  //Will create the global Navigo object used below
-import "./navigo.js"  //Will create the global Navigo object used below
+import "./navigo_EditedByLars.js"  //Will create the global Navigo object used below
+//import "./navigo.min.js"  //Will create the global Navigo object used below
 
 import {
   setActiveLink, adjustForMissingHash, renderTemplate, loadHtml
@@ -16,7 +17,6 @@ import { initListReservationsAll } from "./pages/showReservations/reservations.j
 
 window.addEventListener("load", async () => {
 
-  const templateAbout = await loadHtml("./pages/about/about.html")
   const templateCars = await loadHtml("./pages/cars/cars.html")
   const templateMembers = await loadHtml("./pages/members/members.html")
   const templateAddCar = await loadHtml("./pages/addCar/addCar.html")
@@ -42,13 +42,13 @@ window.addEventListener("load", async () => {
     })
     .on({
       //For very simple "templates", you can just insert your HTML directly like below
-      "/": () => document.getElementById("content").innerHTML =
-        `<h2>Home</h2>
-      <p style='margin-top:2em'>
-      This is the content of the Home Route
-      </p>
+      "/": () => document.getElementById("content").innerHTML = `
+        <h2>Home</h2>
+        <img style="width:50%;margin-top:1em;" src="./images/cars.png">
+        <p style='margin-top:1em;font-size: 1.5em;color:red;'>
+          Car's 'R' Us - Created, as a help to make GREAT fullstack developers <span style='font-size:2em;'>&#128516;</span>
+        </p>
      `,
-
       "/cars": () => {
         renderTemplate(templateCars, "content")
         initCars()

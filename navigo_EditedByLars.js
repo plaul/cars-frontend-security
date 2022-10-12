@@ -1,3 +1,11 @@
+/***************************************************************************************/
+/* Important note: 
+   This version contains a change, that solves a problem when used with Bottstraps Navbar
+   This could however cousse problems with other Navigo features.
+   Search for lmor@kea.dk to see the changes
+ */
+/***************************************************************************************/
+
 (function webpackUniversalModuleDefinition(root, factory) {
   if (typeof exports === 'object' && typeof module === 'object')
     module.exports = factory();
@@ -22,7 +30,7 @@
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function () { return /* binding */ Q; }
             /* harmony export */
-});
+          });
           function Q(funcs, c, done) {
             var context = c || {};
             var idx = 0;
@@ -61,7 +69,7 @@
           };
 
           /***/
-}),
+        }),
 
 /***/ "./src/constants.ts":
 /*!**************************!*\
@@ -80,7 +88,7 @@
 /* harmony export */   "START_BY_SLASH_REGEXP": function () { return /* binding */ START_BY_SLASH_REGEXP; },
 /* harmony export */   "MATCH_REGEXP_FLAGS": function () { return /* binding */ MATCH_REGEXP_FLAGS; }
             /* harmony export */
-});
+          });
           var PARAMETER_REGEXP = /([:*])(\w+)/g;
           var REPLACE_VARIABLE_REGEXP = "([^/]+)";
           var WILDCARD_REGEXP = /\*/g;
@@ -91,7 +99,7 @@
           var MATCH_REGEXP_FLAGS = "";
 
           /***/
-}),
+        }),
 
 /***/ "./src/index.ts":
 /*!**********************!*\
@@ -103,7 +111,7 @@
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function () { return /* binding */ Navigo; }
             /* harmony export */
-});
+          });
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils */ "./src/utils.ts");
 /* harmony import */ var _Q__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Q */ "./src/Q.ts");
 /* harmony import */ var _middlewares_setLocationPath__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./middlewares/setLocationPath */ "./src/middlewares/setLocationPath.ts");
@@ -343,6 +351,8 @@
 
                     if (!destroyed) {
                       e.preventDefault();
+                      //Commented out by lmor@kea.dk to allow Bootstrap navbars with dropdowns
+                      //this might course problems with other features of Navigo
                       //e.stopPropagation();
                       self.navigate((0, _utils__WEBPACK_IMPORTED_MODULE_0__.clean)(location), options);
                     }
@@ -550,7 +560,7 @@
           }
 
           /***/
-}),
+        }),
 
 /***/ "./src/lifecycles.ts":
 /*!***************************!*\
@@ -563,7 +573,7 @@
 /* harmony export */   "foundLifecycle": function () { return /* binding */ foundLifecycle; },
 /* harmony export */   "notFoundLifeCycle": function () { return /* binding */ notFoundLifeCycle; }
             /* harmony export */
-});
+          });
 /* harmony import */ var _Q__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Q */ "./src/Q.ts");
 /* harmony import */ var _middlewares_checkForLeaveHook__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./middlewares/checkForLeaveHook */ "./src/middlewares/checkForLeaveHook.ts");
 /* harmony import */ var _middlewares_checkForBeforeHook__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./middlewares/checkForBeforeHook */ "./src/middlewares/checkForBeforeHook.ts");
@@ -591,7 +601,7 @@
           }, foundLifecycle.concat([_middlewares_updateState__WEBPACK_IMPORTED_MODULE_9__.default]), [_middlewares_errorOut__WEBPACK_IMPORTED_MODULE_7__.default, _middlewares_flushCurrent__WEBPACK_IMPORTED_MODULE_8__.default])];
 
           /***/
-}),
+        }),
 
 /***/ "./src/middlewares/callHandler.ts":
 /*!****************************************!*\
@@ -603,7 +613,7 @@
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function () { return /* binding */ callHandler; }
             /* harmony export */
-});
+          });
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils */ "./src/utils.ts");
 
           function callHandler(context, done) {
@@ -616,7 +626,7 @@
           }
 
           /***/
-}),
+        }),
 
 /***/ "./src/middlewares/checkForAfterHook.ts":
 /*!**********************************************!*\
@@ -628,7 +638,7 @@
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function () { return /* binding */ checkForAfterHook; }
             /* harmony export */
-});
+          });
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils */ "./src/utils.ts");
 
           function checkForAfterHook(context, done) {
@@ -642,7 +652,7 @@
           }
 
           /***/
-}),
+        }),
 
 /***/ "./src/middlewares/checkForAlreadyHook.ts":
 /*!************************************************!*\
@@ -654,7 +664,7 @@
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function () { return /* binding */ checkForAlreadyHook; }
             /* harmony export */
-});
+          });
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils */ "./src/utils.ts");
 
           function checkForAlreadyHook(context, done) {
@@ -678,7 +688,7 @@
           }
 
           /***/
-}),
+        }),
 
 /***/ "./src/middlewares/checkForBeforeHook.ts":
 /*!***********************************************!*\
@@ -690,7 +700,7 @@
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function () { return /* binding */ checkForBeforeHook; }
             /* harmony export */
-});
+          });
 /* harmony import */ var _Q__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Q */ "./src/Q.ts");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./src/utils.ts");
 
@@ -717,7 +727,7 @@
           }
 
           /***/
-}),
+        }),
 
 /***/ "./src/middlewares/checkForDeprecationMethods.ts":
 /*!*******************************************************!*\
@@ -729,7 +739,7 @@
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function () { return /* binding */ checkForDeprecationMethods; }
             /* harmony export */
-});
+          });
           function checkForDeprecationMethods(context, done) {
             if (context.navigateOptions) {
               if (typeof context.navigateOptions["shouldResolve"] !== "undefined") {
@@ -745,7 +755,7 @@
           }
 
           /***/
-}),
+        }),
 
 /***/ "./src/middlewares/checkForForceOp.ts":
 /*!********************************************!*\
@@ -757,7 +767,7 @@
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function () { return /* binding */ checkForForceOp; }
             /* harmony export */
-});
+          });
           function checkForForceOp(context, done) {
             if (context.navigateOptions.force === true) {
               context.instance._setCurrent([context.instance._pathToMatchObject(context.to)]);
@@ -769,7 +779,7 @@
           }
 
           /***/
-}),
+        }),
 
 /***/ "./src/middlewares/checkForLeaveHook.ts":
 /*!**********************************************!*\
@@ -781,7 +791,7 @@
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function () { return /* binding */ checkForLeaveHook; }
             /* harmony export */
-});
+          });
 /* harmony import */ var _Q__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Q */ "./src/Q.ts");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./src/utils.ts");
 
@@ -840,7 +850,7 @@
           }
 
           /***/
-}),
+        }),
 
 /***/ "./src/middlewares/checkForNotFoundHandler.ts":
 /*!****************************************************!*\
@@ -852,7 +862,7 @@
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function () { return /* binding */ checkForNotFoundHandler; }
             /* harmony export */
-});
+          });
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils */ "./src/utils.ts");
 
           function checkForNotFoundHandler(context, done) {
@@ -883,7 +893,7 @@
           }
 
           /***/
-}),
+        }),
 
 /***/ "./src/middlewares/errorOut.ts":
 /*!*************************************!*\
@@ -895,14 +905,14 @@
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function () { return /* binding */ errorOut; }
             /* harmony export */
-});
+          });
           function errorOut(context, done) {
             if (!context.resolveOptions || context.resolveOptions.noMatchWarning === false || typeof context.resolveOptions.noMatchWarning === "undefined") console.warn("Navigo: \"" + context.currentLocationPath + "\" didn't match any of the registered routes.");
             done();
           }
 
           /***/
-}),
+        }),
 
 /***/ "./src/middlewares/flushCurrent.ts":
 /*!*****************************************!*\
@@ -914,7 +924,7 @@
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function () { return /* binding */ flushCurrent; }
             /* harmony export */
-});
+          });
           function flushCurrent(context, done) {
             context.instance._setCurrent(null);
 
@@ -922,7 +932,7 @@
           }
 
           /***/
-}),
+        }),
 
 /***/ "./src/middlewares/matchPathToRegisteredRoutes.ts":
 /*!********************************************************!*\
@@ -934,7 +944,7 @@
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function () { return /* binding */ matchPathToRegisteredRoutes; }
             /* harmony export */
-});
+          });
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils */ "./src/utils.ts");
 
           function matchPathToRegisteredRoutes(context, done) {
@@ -957,7 +967,7 @@
           }
 
           /***/
-}),
+        }),
 
 /***/ "./src/middlewares/processMatches.ts":
 /*!*******************************************!*\
@@ -969,7 +979,7 @@
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function () { return /* binding */ processMatches; }
             /* harmony export */
-});
+          });
 /* harmony import */ var _Q__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Q */ "./src/Q.ts");
 /* harmony import */ var _lifecycles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lifecycles */ "./src/lifecycles.ts");
 /* harmony import */ var _updateState__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./updateState */ "./src/middlewares/updateState.ts");
@@ -1001,7 +1011,7 @@
           }
 
           /***/
-}),
+        }),
 
 /***/ "./src/middlewares/setLocationPath.ts":
 /*!********************************************!*\
@@ -1013,7 +1023,7 @@
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function () { return /* binding */ setLocationPath; }
             /* harmony export */
-});
+          });
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils */ "./src/utils.ts");
 
           function setLocationPath(context, done) {
@@ -1026,7 +1036,7 @@
           }
 
           /***/
-}),
+        }),
 
 /***/ "./src/middlewares/updateBrowserURL.ts":
 /*!*********************************************!*\
@@ -1038,7 +1048,7 @@
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function () { return /* binding */ updateBrowserURL; }
             /* harmony export */
-});
+          });
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils */ "./src/utils.ts");
 
           var isWindowAvailable = (0, _utils__WEBPACK_IMPORTED_MODULE_0__.windowAvailable)();
@@ -1074,7 +1084,7 @@
           }
 
           /***/
-}),
+        }),
 
 /***/ "./src/middlewares/updateState.ts":
 /*!****************************************!*\
@@ -1086,7 +1096,7 @@
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function () { return /* binding */ updateState; }
             /* harmony export */
-});
+          });
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils */ "./src/utils.ts");
 
           function updateState(context, done) {
@@ -1098,7 +1108,7 @@
           }
 
           /***/
-}),
+        }),
 
 /***/ "./src/middlewares/waitingList.ts":
 /*!****************************************!*\
@@ -1110,13 +1120,13 @@
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function () { return /* binding */ waitingList; }
             /* harmony export */
-});
+          });
           function waitingList(context) {
             context.instance.__markAsClean(context);
           }
 
           /***/
-}),
+        }),
 
 /***/ "./src/utils.ts":
 /*!**********************!*\
@@ -1141,7 +1151,7 @@
 /* harmony export */   "windowAvailable": function () { return /* binding */ windowAvailable; },
 /* harmony export */   "accumulateHooks": function () { return /* binding */ accumulateHooks; }
             /* harmony export */
-});
+          });
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./src/constants.ts");
 
           function getCurrentEnvURL(fallback) {
@@ -1325,10 +1335,10 @@
           }
 
           /***/
-})
+        })
 
       /******/
-});
+    });
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
@@ -1339,14 +1349,14 @@
 /******/ 		if (__webpack_module_cache__[moduleId]) {
 /******/ 			return __webpack_module_cache__[moduleId].exports;
         /******/
-}
+      }
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
 /******/ 			// no module.id needed
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
         /******/
-};
+      };
 /******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
@@ -1354,7 +1364,7 @@
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
       /******/
-}
+    }
 /******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
@@ -1365,19 +1375,19 @@
 /******/ 				if (__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
             /******/
-}
+          }
           /******/
-}
+        }
         /******/
-};
+      };
       /******/
-}();
+    }();
 /******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	!function () {
 /******/ 		__webpack_require__.o = function (obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
       /******/
-}();
+    }();
 /******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	!function () {
@@ -1386,12 +1396,12 @@
 /******/ 			if (typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
           /******/
-}
+        }
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
         /******/
-};
+      };
       /******/
-}();
+    }();
 /******/
 /************************************************************************/
 /******/ 	// module exports must be returned from runtime so entry inlining is disabled
@@ -1399,7 +1409,10 @@
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__("./src/index.ts");
     /******/
-})()
+  })()
     .default;
 });
+/*
+Removed by lmor@kea.dk
 //# sourceMappingURL=navigo.js.map
+*/

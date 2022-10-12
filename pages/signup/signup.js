@@ -44,8 +44,9 @@ async function saveMember(evt) {
   memberRequest.zip = document.getElementById("input-zip").value
 
   const postOptions = {}
-  postOptions.method = "POST",
-    postOptions.headers = { "Content-type": "application/json" }
+  postOptions.method = "POST"
+  postOptions.headers = { "Content-type": "application/json" }
+  
   postOptions.body = JSON.stringify(memberRequest)
   try {
     const newMember = await fetch(URL, postOptions).then(handleHttpErrors)
