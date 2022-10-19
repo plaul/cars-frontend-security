@@ -2,6 +2,7 @@ import { API_URL } from "../../settings.js"
 import { handleHttpErrors, sanitizeStringWithTableRows } from "../../utils.js"
 
 export async function initListReservationsAll() {
+  document.getElementById("error").innerText = ""
   try {
     const HARDCODED_USER = "member1"
     const URL = API_URL + "/reservations/" + HARDCODED_USER

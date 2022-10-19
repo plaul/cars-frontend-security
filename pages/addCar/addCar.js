@@ -9,6 +9,11 @@ export async function initAddCar(match) {
   clearInputFields()
 }
 
+/**
+ * Set's the status message, either styled as an error, or as a normal message
+ * @param {String} msg The status message to display
+ * @param {boolean} [isError] true, to style in red
+ */
 function setStatusMsg(msg, isError) {
   const color = isError ? "red" : "darkgreen"
   const statusNode = document.getElementById("status")
@@ -16,10 +21,6 @@ function setStatusMsg(msg, isError) {
   statusNode.innerText = msg
 }
 
-function addCar() {
-  setStatusMsg("", false)
-  clearInputFields()
-}
 
 async function submitCar(evt) {
   evt.preventDefault()
@@ -37,7 +38,6 @@ async function submitCar(evt) {
     }
 
     const options = {}
-    //If ID is set, it must be an existing car, so method is PUT
     options.method = "POST"
     options.headers = { "Content-type": "application/json" }
     options.body = JSON.stringify(car)

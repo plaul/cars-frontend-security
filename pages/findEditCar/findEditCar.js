@@ -4,16 +4,29 @@ import { API_URL } from "../../settings.js"
 //Add id to this URL to get a single user
 const URL = `${API_URL}/cars`
 
-export async function initFindEditCar(match) {
-  document.getElementById("btn-fetch-car").onclick = fetchCar
+//Store reference to commonly used nodes
+let carIdInput
+let carInputBrand
+let carInputModel
+let carInputPricePrDay
+let carInputDiscount
 
+export async function initFindEditCar(match) {
+  document.getElementById("btn-fetch-car").onclick = getCarIdFromInputField
   document.getElementById("btn-submit-edited-car").onclick = submitEditedCar
-  document.getElementById("btn-delete-car").onclick = deleteCar
+  document.getElementById("btn-delete-car").onclick = deleteCar;
+  carIdInput = document.getElementById("car-id")
+  carInputBrand = document.getElementById("brand")
+  carInputModel = document.getElementById("model")
+  carInputPricePrDay = document.getElementById("price-pr-day")
+  carInputDiscount = document.getElementById("best-discount")
+
   setInfoText("");
+  //Check if id is provided as a Query parameter
   if (match?.params?.id) {
     const id = match.params.id
     try {
-      fetchCar(null, id)
+      fetchCar(id)
     } catch (err) {
       setStatusMsg("Could not find car: " + id, true)
     }
@@ -22,6 +35,9 @@ export async function initFindEditCar(match) {
   }
 }
 
+/**
+ * Delete the car, with the given ID
+ */
 async function deleteCar() {
   try {
     const idForCarToDelete = document.getElementById("car-id").value
@@ -46,13 +62,17 @@ async function deleteCar() {
   }
 }
 
-async function fetchCar(evt, idFromMatch) {
-  setStatusMsg("", false)
-  const id = idFromMatch ? idFromMatch : document.getElementById("car-id-input").value
+function getCarIdFromInputField() {
+  const id = document.getElementById("car-id-input").value
   if (!id) {
     setStatusMsg("Please provide an id", true)
     return
   }
+  fetchCar(id)
+}
+
+async function fetchCar(id) {
+  setStatusMsg("", false)
   try {
     const URL_FOR_ADMIN = URL + "/admin"
     const car = await fetch(URL_FOR_ADMIN + "/" + id).then(handleHttpErrors)
@@ -68,6 +88,11 @@ async function fetchCar(evt, idFromMatch) {
   }
 }
 
+/**
+ * Set's the status message, either styled as an error, or as a normal message
+ * @param {String} msg The status message to display
+ * @param {boolean} [isError] true, to style in red
+ */
 function setStatusMsg(msg, isError) {
   const color = isError ? "red" : "darkgreen"
   const statusNode = document.getElementById("status")
@@ -80,11 +105,11 @@ function setInfoText(txt) {
 }
 
 function renderCar(car) {
-  document.getElementById("car-id").value = car.id;
-  document.getElementById("brand").value = car.brand;
-  document.getElementById("model").value = car.model;
-  document.getElementById("price-pr-day").value = car.pricePrDay;
-  document.getElementById("best-discount").value = car.bestDiscount;
+  carIdInput.value = car.id;
+  carInputBrand.value = car.brand;
+  carInputModel.value = car.model;
+  carInputPricePrDay.value = car.pricePrDay
+  carInputDiscount.value = car.bestDiscount
 }
 
 
@@ -92,11 +117,11 @@ async function submitEditedCar(evt) {
   evt.preventDefault()
   try {
     const car = {}
-    car.id = document.getElementById("car-id").value
-    car.brand = document.getElementById("brand").value
-    car.model = document.getElementById("model").value
-    car.pricePrDay = document.getElementById("price-pr-day").value
-    car.bestDiscount = document.getElementById("best-discount").value
+    car.id = carIdInput.value
+    car.brand = carInputBrand.value
+    car.model = carInputModel.value
+    car.pricePrDay = carInputPricePrDay.value
+    car.bestDiscount = carInputDiscount.value
 
     if (car.brand === "" || car.model === "" || car.pricePrDay == "") {
       setStatusMsg(`Missing fields required for a submit`, false)
@@ -104,7 +129,6 @@ async function submitEditedCar(evt) {
     }
 
     const options = {}
-    //If ID is set, it must be an existing car, so method is PUT
     options.method = "PUT"
     options.headers = { "Content-type": "application/json" }
     options.body = JSON.stringify(car)
@@ -126,9 +150,9 @@ async function submitEditedCar(evt) {
 function clearInputFields() {
   document.getElementById("car-id-input").value = ""
   //********************* */
-  document.getElementById("car-id").value = "";
-  document.getElementById("brand").value = "";
-  document.getElementById("model").value = "";
-  document.getElementById("price-pr-day").value = "";
-  document.getElementById("best-discount").value = "";
+  carIdInput.value = "";
+  carInputBrand.value = "";
+  carInputModel.value = "";
+  carInputPricePrDay.value = "";
+  carInputDiscount.value = "";
 }

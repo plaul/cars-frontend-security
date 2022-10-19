@@ -4,8 +4,17 @@ import { handleHttpErrors } from "../../utils.js"
 import { sanitizeStringWithTableRows } from "../../utils.js"
 const URL = API_URL + "/cars"
 
+let carIdInput
+let carUsernameInput
+let carReservationDate
 
 export async function initReservation() {
+
+  //Initialise nodes used more than once
+  carIdInput = document.getElementById("car-id")
+  carUsernameInput = document.getElementById("user-name")
+  carReservationDate = document.getElementById("reservation-date")
+
   try {
     const cars = await fetch(URL).then(handleHttpErrors)
     document.getElementById("table-rows").onclick = setupReservationModal
@@ -39,10 +48,10 @@ async function setupReservationModal(evt) {
   const car = JSON.parse(btn.dataset.car)
   const headerText = `Reserve car: (${car.id}), ${car.brand}, ${car.model}, price: ${car.pricePrDay}`
   document.getElementById("reservation-modal-label").innerText = headerText
-  document.getElementById("car-id").value = car.id
-
-  document.getElementById("user-name").value = ""
-  document.getElementById("reservation-date").value = ""
+  
+  carIdInput.value = car.id
+  carUsernameInput.value = ""
+  carReservationDate.value = ""
   setStatusMsg("", false)
   document.getElementById("btn-reservation").onclick = reserveCar
 }
@@ -50,9 +59,9 @@ async function setupReservationModal(evt) {
 async function reserveCar() {
   const URL = API_URL + "/reservations"
   const reservationRequest = {}
-  reservationRequest.carId = document.getElementById("car-id").value
-  reservationRequest.username = document.getElementById("user-name").value
-  reservationRequest.date = document.getElementById("reservation-date").value
+  reservationRequest.carId = carIdInput.value
+  reservationRequest.username = carUsernameInput.value
+  reservationRequest.date = carReservationDate.value
   const fetchOptions = {}
   fetchOptions.method = "POST"
   fetchOptions.headers = { "Content-Type": "application/json" }
@@ -67,6 +76,12 @@ async function reserveCar() {
   }
 }
 
+/**
+ * Set's the status message, either styled as an error, or as a normal message
+ * @param {String} msg The status message to display
+ * @param {boolean} [isError] true, to style in red
+ * @param {String} [node] Use this to provide a node to set the error on. If left out, it will assume a node with the id 'status'
+ */
 function setStatusMsg(msg, isError, node) {
   const color = isError ? "red" : "darkgreen"
   const statusNode = node ? document.getElementById(node) : document.getElementById("status")

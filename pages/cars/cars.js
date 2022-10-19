@@ -18,6 +18,7 @@ export async function initCars() {
   </tr>
   `).join("\n")
 
+    //You should ALWAYS do this from now on
     const safeRows = sanitizeStringWithTableRows(carRows);
     document.getElementById("table-rows").innerHTML = safeRows
   } catch (err) {
@@ -32,7 +33,7 @@ export async function initCars() {
 
 async function gotoToAddEditView(evt) {
   const target = evt.target
-  //Verify that it was a Edit/Delete button that was clicked
+  //Verify that it was an Edit/Delete button that was clicked
   if (!target.id.includes("-column-id")) {
     return
   }

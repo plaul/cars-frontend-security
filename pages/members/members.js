@@ -3,6 +3,8 @@ import { sanitizeStringWithTableRows, handleHttpErrors } from "../../utils.js"
 
 const URL = API_URL + "/members"
 
+const errStatus = document.getElementById("error")
+
 export function initMembers() {
   document.getElementById("tbl-body").onclick = showDetails
   getAllMembers()
@@ -15,9 +17,9 @@ async function getAllMembers() {
   }
   catch (err) {
     if (err.apiError) {
-      document.getElementById("error").innerText = err.apiError.message
+      errStatus.innerText = err.apiError.message
     } else {
-      document.getElementById("error").innerText = err.message + " (Is the API online?)"
+      errStatus.innerText = err.message + " (Is the API online?)"
       console.error(err.message + " (Is the API online?)")
     }
   }
@@ -58,11 +60,5 @@ function showDetails(evt) {
   document.getElementById("created").innerText = mem.created
   document.getElementById("edited").innerText = mem.edited
   document.getElementById("ranking").innerText = mem.ranking
-
-  //  document.getElementById("member-content").innerText = memberAsJson
-
-
-
-
 }
 

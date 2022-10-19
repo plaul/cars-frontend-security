@@ -1,6 +1,6 @@
 
 
 
-export function initLogin(){
+export function initLogin() {
 
 }
